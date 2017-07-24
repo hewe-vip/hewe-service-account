@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+//定义生成的java接口类将要存放的包
+option java_package = "grpc.service";
+//proto java 序列化描述信息的类
+option java_outer_classname = "CommonDataProto";
+option objc_class_prefix = "HLW";
+
+package data.common; //描述proto文件的包名
+
+message RecordMsg {
+    int32 count = 1;
+}

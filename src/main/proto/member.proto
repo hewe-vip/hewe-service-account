@@ -1,0 +1,43 @@
+syntax = "proto3";
+import "common.proto";
+
+option java_multiple_files = true;
+//定义生成的java接口类将要存放的包
+option java_package = "grpc.service";
+//proto java 序列化描述信息的类
+option java_outer_classname = "MemberDataProto";
+option objc_class_prefix = "HLW";
+
+package grpc.proto.member; //描述proto文件的包名
+
+
+
+// 远程调用接口定义
+service MemberDataService {
+    rpc insert(MemberMsg) returns(data.common.RecordMsg);
+    rpc selectById(MemberIdMsg) returns(MemberMsg);
+    rpc selectByCelPass(CelPassMsg) returns (MemberIdMsg);
+    rpc selectByEmailPass(EmailPassMsg) returns (MemberIdMsg);
+    rpc updateByPrimaryKey(MemberMsg) returns (data.common.RecordMsg);
+}
+
+message MemberIdMsg {
+    string id = 1;
+}
+message MemberMsg {
+    string id = 1;
+    string cel = 2;
+    string email = 3;
+    string passwd = 4;
+    string salt = 5;
+}
+
+message CelPassMsg {
+    string cel = 1;
+    string pass = 2;
+}
+message EmailPassMsg {
+    string email = 1;
+    string pass = 2;
+}
+
